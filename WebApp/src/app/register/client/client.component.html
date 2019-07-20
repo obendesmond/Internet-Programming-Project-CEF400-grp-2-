@@ -17,7 +17,7 @@
             <input #email="ngModel" [(ngModel)]="clientService.aClient.email" name="email" placeholder="Your Email Address" type="email" tabindex="2" required [pattern]="emailRegex" autocomplete="off">
             <div *ngIf="clientForm.submitted && !email.valid">
               <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
-              <h6 class="errors" *ngIf="email.errors.Pattern">Invalid email</h6>
+              <h6 class="errors" *ngIf="email.errors.pattern">Invalid email</h6>
           </div>
         </fieldset>
         <fieldset>

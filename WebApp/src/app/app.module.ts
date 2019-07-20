@@ -6,9 +6,10 @@ import { AppRoutingModule, Components } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatButtonModule, MatSelectModule, MatListModule, MatChipsModule,
-   MatFormFieldModule,  MatInputModule, MatDividerModule, MatCardModule } from '@angular/material';
+   MatFormFieldModule,  MatInputModule, MatDividerModule, MatCardModule, MatRadioModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDividerModule,
     MatSelectModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

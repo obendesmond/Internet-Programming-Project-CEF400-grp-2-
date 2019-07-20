@@ -1,37 +1,28 @@
-<div class="main" fxLayout="row " fxLayoutAlign="center center">
-<mat-card fxFlex="40" fxLayout="row wrap" fxLayoutAlign="center center">
-    <mat-card-header fxFlex="100">
-        <mat-card-title>LOGIN TO CONTINUE WHERE YOU LEFT OFF</mat-card-title>
-        <mat-card-subtitle>As Doctor or Patient</mat-card-subtitle>
-    </mat-card-header>
-    <br><br><br><br>
-    <mat-card-content fxLayout="row wrap" fxFlex="100">
-        <form action="" method="get" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center"> 
-          <mat-form-field appearance="outline" fxFlex="70">
-            <mat-label>username or email</mat-label>
-                <input matInput 
-                       type="text"
-                       placeholder="">
-                <span matSuffix>email</span>
-          </mat-form-field>
+<div class="container">
+        <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && loginUser(loginForm)" id="contact">
+            <h3>CLIENT LOGIN FORM</h3>
+            <h4>As Client/Doctor</h4>
+            <div id="msg">
+                <label class="errors" *ngIf="serverErrorMessages">{{serverErrorMessages}}</label>
+            </div>
+            <fieldset>
+                <input #email="ngModel" [(ngModel)]="loginModel.email" name="email" placeholder="Your Email Address" type="email" tabindex="1" required [pattern]="emailRegex" autocomplete="off">
+                <div *ngIf="loginForm.submitted && !email.valid">
+                  <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
+                  <h6 class="errors" *ngIf="email.errors.pattern">Invalid email</h6>
+              </div>
+            </fieldset>
+            
+            <fieldset>
+                <input #password="ngModel" [(ngModel)]="loginModel.password" name="password" placeholder="Your Password" type="password" tabindex="2" required autocomplete="off">
+                <div *ngIf="loginForm.submitted && !password.valid">
+                    <h6 class="errors" *ngIf="password.errors.required">Your password is required</h6>
+                </div>
+            </fieldset>
 
-
-          <mat-form-field appearance="outline" fxFlex="70">
-              <mat-label>password</mat-label>
-                  <input matInput 
-                         type="password"
-                         placeholder="">
-                  <span matSuffix>password</span>
-            </mat-form-field>
-
-
-            <a href="" style="height: 3.2em;padding-top:5px;" mat-raised-button fxFlex="70" color="primary">LOGIN TO YOUR ACCOUNT</a>
-            <a href="" style="height: 3.2em;padding-top:5px;" mat-button fxFlex="70" color="primary">Forgot Password?</a>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Login</button>
+            </fieldset>
+            <p class="copyright"><a [routerLink]="['/home']" routerLinkActive="router-link-active" title="Colorlib">forgot password</a></p>
         </form>
-    </mat-card-content>
-    
-    <mat-card-footer>
-        
-    </mat-card-footer>
-</mat-card>
-</div>
+    </div> 
