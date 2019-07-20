@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-var Appointment = mongoose.model('Appointment', {
-    doctor_id: { type: String },
-    patient_id: { type: String },
-    session: { type: String },
-});
+const appointmentSchema =new mongoose.Schema(
+    {
+        doctor_id: { type: String },
+        patient_id: { type: String },
+        session: { type: String },
+    }
+);
 
-module.exports = { Appointment };
+var Appointment = mongoose.model('Appointment', appointmentSchema);

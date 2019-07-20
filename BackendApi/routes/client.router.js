@@ -10,8 +10,8 @@ router.get('/',clientController.getAllUsers);
 router.post('/register', clientController.register);
 router.post('/login', clientController.authenticate);
 router.get('/clientProfile',jwtHelper.verifyJwtToken, clientController.userProfile);
-router.post('/updateProfile/:id',clientController.updateProfile);
-router.post('/delete/:id',clientController.removeUser);
+router.put('/updateProfile/:id',clientController.updateProfile);
+router.delete('/delete/:id',clientController.removeUser);
 
 module.exports = router;
 

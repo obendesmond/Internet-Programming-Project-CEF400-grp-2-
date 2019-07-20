@@ -12,6 +12,7 @@ const passport = require('passport');
 // include routes
 const clientRouter = require('./routes/client.router');
 const doctorRouter = require('./routes/doctor.router');
+const appointmentRouter = require('./routes/appointment.router');
 
 // start app
 var app = express();
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(passport.initialize());
 app.use('/api/clients', clientRouter);
 app.use('/api/doctors', doctorRouter);
+app.use('/api/appointments', appointmentRouter);
 
 // app error handler
 app.use((err, req, res, next) => {

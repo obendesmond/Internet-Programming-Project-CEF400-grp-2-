@@ -21,7 +21,7 @@ export class DoctorComponent implements OnInit {
 
   registerDoctor(form: NgForm){
     this.doctorService.postDoctor(form.value).subscribe(
-      res =>{
+      res => {
         this.showSuccessMessage = true;
         setTimeout(() => {this.showSuccessMessage=false}, 4000);
         this.reset_form(form);

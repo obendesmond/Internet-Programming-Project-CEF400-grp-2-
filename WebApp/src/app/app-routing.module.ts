@@ -15,12 +15,12 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
 
 const routes: Routes = [
     {path: 'home', component: MainscreenComponent},
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'doctor-registration', component: DoctorComponent},
     {path: 'client-registration', component: ClientComponent},
     {path: 'doctor-list', component: DoctorListComponent},
-    {path: 'doctor-detail', component: DoctorDetailsComponent}
+    {path: 'doctor-detail', component: DoctorDetailsComponent},
+    {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

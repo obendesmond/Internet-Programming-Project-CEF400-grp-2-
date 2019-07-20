@@ -23,4 +23,21 @@ export class PatientService {
   postClient(client: Patient){
     return this.http.post(environment.apiBaseUrlClients+'/register',client);
   }
+
+  // getAllClients(){
+  //   return this.http.get(environment.apiBaseUrlClients+'/');
+  // }
+
+  // loginClient(email,password){
+  //   return this.http.post(environment.apiBaseUrlClients+'/login',email,password);
+  // }
+
+  // updateProfile(client: Patient, id){
+  //   return this.http.put(environment.apiBaseUrlClients+'/updateProfile/'+id, client);
+  // }
+
+  // deleteClient(id){
+  //   return this.http.delete(environment.apiBaseUrlClients+'/delete/'+id);
+  // }
+
 }

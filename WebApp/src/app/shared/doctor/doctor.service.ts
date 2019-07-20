@@ -25,4 +25,21 @@ export class DoctorService {
   postDoctor(doctor: Doctor){
     return this.http.post(environment.apiBaseUrlDoctors+'/register',doctor);
   }
+
+  // loginDoctor(email,password){
+  //   return this.http.post(environment.apiBaseUrlDoctors+'/login',email,password);
+  // }
+
+  // listDoctors(){
+  //   return this.http.get(environment.apiBaseUrlDoctors+'/');
+  // }
+
+  // updateProfile(doctor: Doctor,id){
+  //   return this.http.put(environment.apiBaseUrlDoctors+'/updateProfile/'+id,doctor);
+  // }
+
+  // deleteDoctor(id){
+  //   return this.http.delete(environment.apiBaseUrlDoctors+'/delete/'+id);
+  // }
+
 }
