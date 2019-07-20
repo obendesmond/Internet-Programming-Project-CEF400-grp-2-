@@ -8,7 +8,7 @@ This is a simple and basic aplication that has the following functionalities sta
 - Allows client to book appointment with the doctor
 - Allows clients to view and edit their appointments with doctors
 - Allows doctors to view their appointments with patients
-- Allows users to view and search doctors with respect to location and specialty
+- Allows clients to view and search doctors with respect to location and specialty
 
 # Technologies used
 - Angular 
