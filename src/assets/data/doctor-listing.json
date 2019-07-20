@@ -1,0 +1,24 @@
+[
+    {   "id": 1, 
+        "name": "ako desmond oben",
+        "location": "Limbe",
+        "specialty": "Dermatologist",
+        "availableSessions": 1,
+        "experience": 3,
+        "description": "i am a practitioner with over 3 years of experience with study in University of Buea as a medical doctor. later studied in university of douala and went abroad and studied on scholarship in Harvard Institude of Technology",
+        "email": "doctorakodesmond@gmail.com",
+        "consulationfee": 10000
+         
+    },
+    {   "id": 2, 
+        "name": "perick keh",
+        "location": "Buea",
+        "specialty": "Neurologist",
+        "availableSessions": 2,
+        "experience": 5,
+        "description": "i am a practitioner with over 3 years of experience with study in University of Buea as a medical doctor. later studied in university of douala and went abroad and studied on scholarship in Harvard Institude of Technology",
+        "email": "doctorakodesmond@gmail.com",
+        "consulationfee": 30000
+         
+    }
+]

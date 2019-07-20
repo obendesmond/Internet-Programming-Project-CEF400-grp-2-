@@ -1,8 +1,8 @@
 <div class="man" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="20px" style="margin-top: 20px;">
 
-  <mat-card fxFlex="40" style="margin-bottom:80px!important;">
+  <mat-card *ngFor="let appointment of appointmentList" fxFlex="40" style="margin-bottom:80px!important;">
       <mat-card-header>
-          <mat-card-title>Appointment</mat-card-title>
+          <mat-card-title>Appointment {{appointment.id}}</mat-card-title>
         
       </mat-card-header>
       
@@ -10,11 +10,11 @@
       <mat-card-content style="height: 5em;">
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-bottom:5px;margin-top:10px;">
           <div fxFlex="40">
-            Client
+            {{appointment.userType}}
           </div>
           <div fxFlex="60" style="color:#2196f3">
            
-            DONGA MANTU ENOLAOQUANTE
+            {{appointment.name}}
           </div>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-bottom:10px">
@@ -22,7 +22,7 @@
             Address
           </div>
           <div fxFlex="60" style="color:#2196f3">           
-           Limbe Middlefarm ,Bota
+           {{appointment.address}}
           </div>
         </div>
 
@@ -31,13 +31,13 @@
             Choosen session
           </div>
           <div fxFlex="60" style="color:#2196f3">
-          session from 1pm - 3pm
+          {{appointment.session}}
           </div>
         </div>
         <mat-divider></mat-divider>
       </mat-card-content>
       <mat-card-actions align="end">
-        <a href="" mat-button color="primary">Cancel appointment</a>
+        <a href="" mat-button color="warn" *ngIf="appointment.userType== 'client'">Cancel appointment</a>
       </mat-card-actions>
     
      

@@ -1,4 +1,4 @@
-<div class="main" fxLayout="row wrap" fxLayoutAlign="start center">
+<div class="main" fxLayout="row wrap" fxLayoutAlign="start center" style="background:white;box-shadow:0px 3px 6px rgba(0,0,0,0.213);">
   <div class="filter-container" fxFlex="80" fxLayout="row">
 <form action="" method="get" fxFlex="100" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
   <span fxFlex="20" style="text-align: center;">Filter Content</span>
@@ -35,8 +35,7 @@
 </form>
 </div>
 </div>
-<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
-    <app-doctor-card></app-doctor-card>
-    <app-doctor-card></app-doctor-card>
-    <app-doctor-card></app-doctor-card>
+<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-top: 30px">
+    <app-doctor-card *ngFor=" let doctor of doctors" [doc]= "doctor"></app-doctor-card>
+   
 </div>

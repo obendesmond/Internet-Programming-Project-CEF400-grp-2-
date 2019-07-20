@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAC,AAAA,EAAE,CAAC;EACA,eAAe,EAAE,IAAI;CACxB;;AACD,AAAA,aAAa,CAAA;EACT,UAAU,EAAE,KAAK;EACjB,KAAK,EAAE,OAAgB;EACvB,YAAY,EAAE,IAAI;EAClB,KAAK,EAAE,KAAK;EACZ,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,KAAK;EACb,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,IAAI;EACjB,aAAa,EAAC,IAAI;EAClB,aAAa,EAAC,GAAG;EACjB,UAAU,EAAC,KAAK;EAChB,UAAU,EAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAc,uBAAO;CAC/C",
+    "sources": [
+        "doctor-card.component.scss"
+    ],
+    "names": [],
+    "file": "doctor-card.component.css"
+}

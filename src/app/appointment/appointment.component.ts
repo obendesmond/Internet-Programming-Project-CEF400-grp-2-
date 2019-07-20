@@ -1,3 +1,4 @@
+import { AppointmentsService } from './../services/appointments.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _appointmentService: AppointmentsService) {  }
 
+  public appointmentList = [];
   ngOnInit() {
+    this._appointmentService.getAllAppointments()
+        .subscribe(data => this.appointmentList = data );
   }
 
 }

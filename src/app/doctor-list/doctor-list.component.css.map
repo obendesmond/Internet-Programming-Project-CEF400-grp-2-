@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAA;EACD,UAAU,EAAE,EAAE;CACjB;;AACD,AAAA,WAAW,CAAA;EACP,MAAM,EAAE,GAAG;EACX,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,QAAQ;EACrB,MAAM,EAAE,cAAc;CACzB",
+    "sources": [
+        "doctor-list.component.scss"
+    ],
+    "names": [],
+    "file": "doctor-list.component.css"
+}

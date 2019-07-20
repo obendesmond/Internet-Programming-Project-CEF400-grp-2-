@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatSelectModule,MatListModule,MatChipsModule,
+import { MatToolbarModule, MatButtonModule, MatSelectModule, MatListModule, MatChipsModule,
    MatFormFieldModule,  MatInputModule, MatDividerModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +17,8 @@ import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentsService } from './services/appointments.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,10 @@ import { AppointmentComponent } from './appointment/appointment.component';
     MatDividerModule,
     MatSelectModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AppointmentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

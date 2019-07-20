@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "appointment.component.scss"
+    ],
+    "names": [],
+    "file": "appointment.component.css"
+}

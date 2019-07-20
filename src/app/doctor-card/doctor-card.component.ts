@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DoctorListingService } from '../services/doctor-listing.service';
+import { DoctorListing } from '../Interfaces/doctor-listing';
 
 @Component({
   selector: 'app-doctor-card',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorCardComponent implements OnInit {
 
+  public doctor_list = [];
+
+  @Input() doc: DoctorListing;
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
