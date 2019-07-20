@@ -1,0 +1,35 @@
+#search_form{
+    height: 3em;
+    padding-left: 1em;
+    font-family: 'Roboto','Sans serif';
+    font-size: 105%;
+    border: none;
+    outline: none;
+    border-radius: 1px;
+    box-shadow: 0px 3px 6px rgba($color: #5c5b5b, $alpha: .412);
+}
+#search_form::placeholder{
+    color: gray;
+
+}
+#location{
+    height: 3em;
+    font-size: 105%;
+    box-shadow: 0 3px 6px rgba($color: #302f2f, $alpha: .421);
+    outline: none;
+}
+.search_btn{
+    height: 3.5em;
+    border-radius: 0px;
+    padding-top: 4px;
+}
+.main{
+    background-image: url(../../assets/heart-3405559_1920.jpg);
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    height: 350px;
+}
+.main_heading{
+    font-size: 160%;
+    font-weight: lighter;
+}
