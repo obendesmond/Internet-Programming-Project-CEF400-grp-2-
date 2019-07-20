@@ -1,37 +1,62 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-// prevent collection.ensureIndex deprecated error
-mongoose.set('useCreateIndex', true);
-
-// create schema(db structure)
-var patientSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: 'name can\'t be empty',
-        minlength: [4, 'name must be atleast 4 character long']
+        required: 'Name can\'t be empty',
+        minlength: [4,'Name must be atleast 4 character long']
     },
     email: {
         type: String,
-        required: 'email can\'t be empty',
+        required: 'Email can\'t be empty',
         unique: true
     },
     tel: {
-        type: String,
-        required: 'phone number can\'t be empty'
+        type: Number,
+        require: 'Phone number can\'t be empty',
+        minlength: [8,'Phone number must be atleast 8 number long']
     },
     password: {
         type: String,
-        required: 'password can\'t be empty',
-        minlength: [5, 'password must be atleast 5 character long']
-    }
+        required: 'Password can\'t be empty',
+        minlength: [5, 'Password must be atleast 5 character long']
+    },
+    saltSecret: String
 });
 
-// custom validation for email property
-patientSchema.path('email').validate((val) => {
-    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regex.test(val);
-}, 'invalid email');
+// Custom validation for email
+userSchema.path('email').validate((val) => {
+    emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailRegex.test(val);
+}, 'Invalid e-mail.');
 
-var Patient = mongoose.model('Patient', patientSchema);
+// Events
+userSchema.pre('save', function (next) {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(this.password, salt, (err, hash) => {
+            this.password = hash;
+            this.saltSecret = salt;
+            next();
+        });
+    });
+});
 
-module.exports = { Patient };
+
+// Methods
+userSchema.methods.verifyPasswordClient = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+userSchema.methods.generateJwt = function () {
+    return jwt.sign({ _id: this._id},
+        process.env.JWT_SECRET,
+    {
+        expiresIn: process.env.JWT_EXP
+    });
+}
+
+
+
+mongoose.model('Patient', userSchema);

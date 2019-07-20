@@ -1,42 +1,39 @@
-// execute configuration file and establish connection
+// include configuration files
 require('./config/config');
 require('./models/db');
+require('./config/passportConfig');
 
-// require node_modules
+// include modules
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const passport = require('passport');
 
-// require controllers
-var doctorController = require('./controllers/doctorController');
-var patientController = require('./controllers/patientController');
-var appointmentController = require('./controllers/appointmentController');
-var loginController = require('./controllers/loginController');
+// include routes
+const clientRouter = require('./routes/client.router');
+const doctorRouter = require('./routes/doctor.router');
 
-// create express app
+// start app
 var app = express();
 
-// middlewares
-// in other to let our backend receive json from requests
+// middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(passport.initialize());
+app.use('/api/clients', clientRouter);
+app.use('/api/doctors', doctorRouter);
 
-// api routes
-app.use('/api/doctors', doctorController);
-app.use('/api/clients', patientController);
-app.use('/api/appointments', appointmentController);
-app.use('/api', loginController);
-
-// handle errors
+// app error handler
 app.use((err, req, res, next) => {
     if (err.name === 'ValidationError') {
         var valErrors = [];
         Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
-        res.status(422).send(valErrors);
-    } else {
-        res.send('No errors found');
+        res.status(422).send(valErrors)
+    }
+    else{
+        console.log(err);
     }
 });
 
-
-app.listen(process.env.PORT, () => { console.log('Server started at port:: ' + process.env.PORT) })
+// start server
+app.listen(process.env.PORT, () => console.log(`Server started at port : ${process.env.PORT}`));

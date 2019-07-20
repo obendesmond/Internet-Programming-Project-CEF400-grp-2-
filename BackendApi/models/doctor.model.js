@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-// prevent collection.ensureIndex deprecated error
-mongoose.set('useCreateIndex', true);
-
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 // schema
-const doctorSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: 'name can\'t be empty',
@@ -38,17 +37,41 @@ const doctorSchema = new mongoose.Schema({
     biography: {
         type: String,
         required: 'biography can\'t be empty'
-    }
+    },
+    saltSecret: String
 });
 
-// custom validation for email property
-doctorSchema.path('email').validate((val) => {
-    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return regex.test(val);
-}, 'invalid email');
+// Custom validation for email
+userSchema.path('email').validate((val) => {
+    emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailRegex.test(val);
+}, 'Invalid e-mail.');
 
-// by default mongodb will know that the db is "doctors" ->
-//or you specify database as third parameter 
-var Doctor = mongoose.model('Doctor', doctorSchema);
+// Events
+userSchema.pre('save', function (next) {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(this.password, salt, (err, hash) => {
+            this.password = hash;
+            this.saltSecret = salt;
+            next();
+        });
+    });
+});
 
-module.exports = { Doctor };
+
+// Methods
+userSchema.methods.verifyPasswordDoctor = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+userSchema.methods.generateJwt = function () {
+    return jwt.sign({ _id: this._id},
+        process.env.JWT_SECRET,
+    {
+        expiresIn: process.env.JWT_EXP
+    });
+}
+
+
+
+mongoose.model('Doctor', userSchema);

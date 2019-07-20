@@ -1,123 +1,111 @@
-const express = require('express');
-const route = express.Router();
 const mongoose = require('mongoose');
+const passport = require('passport');
+const _ = require('lodash');
+// const ObjectId = mongoose.Types.ObjectId();
 
-// require hashPassword controller
-const hashPass = require("./hashPasswordController");
+const User = mongoose.model('Doctor');
 
-// require obeject id to check if a specific id exists in the db
-const ObjectId = require('mongoose').Types.ObjectId;
+module.exports.register = (req, res, next) => {
+    var user = new User();
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.tel = req.body.tel;
+    user.specialty = req.body.specialty;
+    user.consultation_fee = req.body.consultation_fee;
+    user.location = req.body.location;
+    user.password = req.body.password;
+    user.biography = req.body.biography;
 
-// import doctor model
-const { Doctor } = require('../models/doctor.model');
-
-//get all doctors (localhost:3000/api/doctors/)
-route.get('/', (req, res) => {
-    Doctor.find((err, docs) => {
-        if (!err) {
-            res.send(docs);
-            console.log("Doctors retrived successfully!!")
-        } else {
-            console.log('Error Getting Doctors: ' + JSON.stringify(err, undefined, 2));
-        }
-    });
-});
-
-//register doctors
-route.post('/register', async(req, res) => {
-    // create new doctor to register
-    var doctor = new Doctor();
-    doctor.name = req.body.name;
-    doctor.email = req.body.email;
-    doctor.tel = req.body.tel;
-    doctor.specialty = req.body.specialty;
-    doctor.consultation_fee = req.body.consultation_fee;
-    doctor.location = req.body.location;
-    doctor.password = hashPass(req.body.password);
-    doctor.biography = req.body.biography;
-
-    doctor.save((err, doc) => {
-        if (!err) {
+    user.save((err, doc) => {
+        if (!err)
             res.send(doc);
-            console.log("Doctor Data saved successfully!!");
+        else {
+            if (err.code == 11000)
+                res.status(422).send(['Duplicate email adrress found.']);
+            else
+                return next(err);
+        }
+
+    });
+}
+
+module.exports.authenticate = (req, res, next) => {
+    // call for passport authentication
+    passport.authenticate('doctorStrategy', (err, user, info) => {       
+        // error from passport middleware
+        if (err) return res.status(400).json(err);
+        // registered user
+        else if (user) return res.status(200).json({ "token": user.generateJwt() });
+        // unknown user or wrong password
+        else return res.status(404).json(info);
+    })(req, res);
+}
+
+module.exports.userProfile = (req, res, next) =>{
+    User.findOne({ _id: req._id },
+        (err, user) => {
+            if (!user)
+                return res.status(404).json({ status: false, message: 'User record not found.' });
+            else
+                return res.status(200).json({ status: true, user : _.pick(user,['name','email','tel',,'specialty','consultation_fee','location','biography']) });
+        }
+    );
+}
+
+//get all patients
+module.exports.getAllUsers = (req, res, next) => {
+    User.find((err, users) => {
+        if (!err) {
+            res.send(users);
         } else {
-            console.log('Error while savind Doctor: ' + JSON.stringify(err, undefined, 2));
+            return res.status(400).json(err);
         }
     });
-});
+}
 
-// get specific doctor
-route.get('/:id', (req, res) => {
-    var id = req.params.id;
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send("No record with the given id: " + id);
-    } else {
-        Doctor.findById(id, (err, doc) => {
-            if (!err) {
-                res.send(doc);
-                console.log("Doctor user retrived successfully!! (_id: " + id + ")");
-            } else {
-                console.log("Error in retriving Doctor: " + JSON.stringify(err, undefined, 2))
-            }
-        });
-    }
-});
-
-// update doctors 
+// update users account
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.
-mongoose.set('useFindAndModify', false);
-route.put('/:id', (req, res) => {
-    var id = req.params.id;
-    // check if id is valid or in db
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send("No record with the given id: " + id);
-    } else {
-        // create updated doctor 
-        var updatedDoctor = {};
-        updatedDoctor.name = req.body.name;
-        updatedDoctor.email = req.body.email;
-        updatedDoctor.tel = req.body.tel;
-        updatedDoctor.specialty = req.body.specialty;
-        updatedDoctor.consultation_fee = req.body.consultation_fee;
-        updatedDoctor.location = req.body.location;
-        updatedDoctor.password = hashPass(req.body.password);
-        updatedDoctor.biography = req.body.biography;
+// mongoose.set('useFindAndModify', false);
 
-        // update doctor with respect to id
-        Doctor.findByIdAndUpdate(id, { $set: updatedDoctor }, { new: true }, (err, doc) => {
+module.exports.updateProfile = (req,res,next) => {
+    var id = req.params.id;
+
+        // create updated patient 
+        var updatedPatient = {
+            name: req.body.name,
+            email: req.body.email,
+            tel: req.body.tel,
+            specialty: req.body.specialty,
+            consultation_fee: req.body.consultation_fee,
+            location: req.body.location,
+            password: req.body.password,
+            biography: req.body.biography
+        }
+        // update patient with respect to id
+        User.findByIdAndUpdate(id, { $set: updatedPatient }, { new: true }, (err, doc) => {
             /*
-                the {new: boolean} tells mongodb to either return old or updated data of doctor, so
-                {new: true} will return the updated data of doctor stored in the doc variable
+                the {new: boolean} tells mongodb to either return old or updated data of patient, so
+                {new: true} will return the updated data of patient stored in the doc variable
             */
             if (!err) {
                 res.send(doc);
-                console.log("Doctor updated successfully!!! (old_id: " + id + ")");
             } else {
-                console.log("Error updating doctor: " + JSON.stringify(err, undefined, 2));
+                return res.status(400).json(err);
             }
         });
-    }
-});
+ 
+}
 
-//delete doctors account
-route.delete('/:id', (req, res) => {
+//delete patients account
+module.exports.removeUser = (req,res,next) => {
     var id = req.params.id;
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send("No record with the given id: " + id);
-    } else {
-        //delete doctor from db
-        Doctor.findByIdAndRemove(id, (err, doc) => {
+        //delete patient from db
+        User.findByIdAndRemove(id, (err, doc) => {
             if (!err) {
                 res.send(doc);
-                console.log("Doctor Account deleted successfully!!! (_id: " + id + ")");
             } else {
-                console.log("Error deleting doctor: " + JSON.stringify(err, undefined, 2))
+                return res.status(400).json(err);
             }
         });
-    }
-});
-
-
-
-module.exports = route;
+}
