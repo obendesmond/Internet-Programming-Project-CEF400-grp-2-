@@ -6,26 +6,28 @@
     </mat-card-header>
     <br><br><br><br>
     <mat-card-content fxLayout="row wrap" fxFlex="100">
-        <form action="" method="get" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center"> 
-          <mat-form-field appearance="outline" fxFlex="70">
+        
+        <form action="" method="get" fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center center" (ngSubmit)="onSubmit()" #userForm="ngForm" > 
+         {{userCredentials | json }}
+            <mat-form-field appearance="outline" fxFlex="70">
             <mat-label>username or email</mat-label>
-                <input matInput 
+                <input  matInput  name="username" [(ngModel)]="userCredentials.username"
                        type="text"
-                       placeholder="">
+                       placeholder="" >
                 <span matSuffix>email</span>
           </mat-form-field>
 
 
           <mat-form-field appearance="outline" fxFlex="70">
               <mat-label>password</mat-label>
-                  <input matInput 
+                  <input matInput  name="password" [(ngModel)]="userCredentials.password"
                          type="password"
                          placeholder="">
                   <span matSuffix>password</span>
             </mat-form-field>
 
 
-            <a href="" style="height: 3.2em;padding-top:5px;" mat-raised-button fxFlex="70" color="primary">LOGIN TO YOUR ACCOUNT</a>
+            <a href="#" style="height: 3.2em;padding-top:5px;" mat-raised-button fxFlex="70" color="primary" (click)=" openValidationSnackbar()">LOGIN TO YOUR ACCOUNT</a>
             <a href="" style="height: 3.2em;padding-top:5px;" mat-button fxFlex="70" color="primary">Forgot Password?</a>
         </form>
     </mat-card-content>
@@ -35,3 +37,4 @@
     </mat-card-footer>
 </mat-card>
 </div>
+

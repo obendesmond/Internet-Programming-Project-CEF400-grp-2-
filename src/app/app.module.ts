@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatSelectModule, MatListModule, MatChipsModule,
+import { MatToolbarModule, MatButtonModule, MatSelectModule, MatSnackBarModule, MatListModule, MatChipsModule,
    MatFormFieldModule,  MatInputModule, MatDividerModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +19,7 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
 import { AppointmentComponent } from './appointment/appointment.component';
 import { AppointmentsService } from './services/appointments.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatListModule,
     MatChipsModule,
-    HttpClientModule
+    MatSnackBarModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AppointmentsService],
   bootstrap: [AppComponent]

@@ -9,7 +9,6 @@ import { DoctorListing } from '../Interfaces/doctor-listing';
 })
 export class DoctorCardComponent implements OnInit {
 
-  public doctor_list = [];
 
   @Input() doc: DoctorListing;
   constructor() { }
