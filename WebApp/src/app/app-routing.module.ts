@@ -11,6 +11,7 @@ import { ClientComponent } from './register/client/client.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -19,8 +20,9 @@ const routes: Routes = [
     {path: 'doctor-registration', component: DoctorComponent},
     {path: 'client-registration', component: ClientComponent},
     {path: 'doctor-list', component: DoctorListComponent},
-    {path: 'doctor-detail', component: DoctorDetailsComponent},
-    {path: '', redirectTo: 'home', pathMatch: 'full'}
+    {path: 'doctor-detail/:id', component: DoctorDetailsComponent},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -37,5 +39,6 @@ export const Components = [
     ClientComponent,
     DoctorListComponent,
     DoctorCardComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    PageNotFoundComponent
 ];

@@ -26,13 +26,9 @@ export class DoctorService {
     return this.http.post(environment.apiBaseUrlDoctors+'/register',doctor);
   }
 
-  // loginDoctor(email,password){
-  //   return this.http.post(environment.apiBaseUrlDoctors+'/login',email,password);
-  // }
-
-  // listDoctors(){
-  //   return this.http.get(environment.apiBaseUrlDoctors+'/');
-  // }
+  listDoctors(){
+    return this.http.get(environment.apiBaseUrlDoctors+'/');
+  }
 
   // updateProfile(doctor: Doctor,id){
   //   return this.http.put(environment.apiBaseUrlDoctors+'/updateProfile/'+id,doctor);

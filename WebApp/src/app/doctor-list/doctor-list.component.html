@@ -37,7 +37,5 @@
 <div class="space-top"></div>
 
 <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
-    <app-doctor-card></app-doctor-card>
-    <app-doctor-card></app-doctor-card>
-    <app-doctor-card></app-doctor-card>
+    <app-doctor-card *ngFor="let doctor of doctors" [doctorList]="doctor"></app-doctor-card>
 </div>

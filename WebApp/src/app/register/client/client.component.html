@@ -1,5 +1,5 @@
 <div class="container">
-    <form #clientForm="ngForm" (ngSubmit)="clientForm.valid && registerClient(clientForm)" id="contact">
+    <form #clientForm="ngForm" (ngSubmit)="clientForm.valied && registerClient(clientForm)" id="contact">
         <h3>CLIENT REGISTRATION FORM</h3>
         <h4>As Client</h4>
         <div id="msg">
@@ -16,9 +16,9 @@
         <fieldset>
             <input #email="ngModel" [(ngModel)]="clientService.aClient.email" name="email" placeholder="Your Email Address" type="email" tabindex="2" required [pattern]="emailRegex" autocomplete="off">
             <div *ngIf="clientForm.submitted && !email.valid">
-              <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
-              <h6 class="errors" *ngIf="email.errors.pattern">Invalid email</h6>
-          </div>
+                <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
+                <h6 class="errors" *ngIf="email.errors.Pattern">Invalid email</h6>
+            </div>
         </fieldset>
         <fieldset>
             <input #tel="ngModel" [(ngModel)]="clientService.aClient.tel" name="tel" placeholder="Your Phone Number" type="tel" tabindex="3" required autocomplete="off">
@@ -38,4 +38,4 @@
         </fieldset>
         <p class="copyright">Register as <a [routerLink]="['/doctor-registration']" routerLinkActive="router-link-active" title="Colorlib">Doctor</a></p>
     </form>
-</div> 
+</div>

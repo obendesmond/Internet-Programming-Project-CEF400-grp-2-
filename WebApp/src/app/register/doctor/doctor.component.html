@@ -1,7 +1,7 @@
 <div class="container">
-<form #doctorForm="ngForm" (ngSubmit)="doctorForm.valid && registerDoctor(doctorForm)" id="contact">
-    <h3>Doctor REGISTRATION FORM</h3>
-    <h4>As Doctor</h4>
+    <form #doctorForm="ngForm" (ngSubmit)="doctorForm.valid && registerDoctor(doctorForm)" id="contact">
+        <h3>Doctor REGISTRATION FORM</h3>
+        <h4>As Doctor</h4>
         <div id="msg">
             <label class="success" *ngIf="showSuccessMessage">account successfully saved.</label>
             <label class="errors" *ngIf="serverErrorMessages">{{serverErrorMessages}}</label>
@@ -16,21 +16,21 @@
         <fieldset>
             <input #email="ngModel" [(ngModel)]="doctorService.aDoctor.email" name="email" placeholder="Your Email Address" type="email" tabindex="2" required [pattern]="emailRegex" autocomplete="off">
             <div *ngIf="doctorForm.submitted && !email.valid">
-            <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
-            <h6 class="errors" *ngIf="email.errors.pattern">Invalid email address</h6>
-        </div>
+                <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
+                <h6 class="errors" *ngIf="email.errors.pattern">Invalid email address</h6>
+            </div>
         </fieldset>
         <fieldset>
             <input #tel="ngModel" [(ngModel)]="doctorService.aDoctor.tel" name="tel" placeholder="Your Phone Number" type="number" tabindex="3" required minlength="9" autocomplete="off">
             <div *ngIf="doctorForm.submitted && !tel.valid">
-            <h6 class="errors" *ngIf="tel.errors.required">Your phone number is required</h6>
-            <h6 class="errors" *ngIf="tel.errors.minlength">Must be more than 4 characters</h6>
+                <h6 class="errors" *ngIf="tel.errors.required">Your phone number is required</h6>
+                <h6 class="errors" *ngIf="tel.errors.minlength">Must be more than 4 characters</h6>
             </div>
         </fieldset>
         <fieldset>
             <input #specialty="ngModel" [(ngModel)]="doctorService.aDoctor.specialty" name="specialty" placeholder="Your Specialty" type="text" tabindex="3" required autocomplete="off">
             <div *ngIf="doctorForm.submitted && !specialty.valid">
-            <h6 class="errors" *ngIf="specialty.errors.required">Your phone number is required</h6>
+                <h6 class="errors" *ngIf="specialty.errors.required">Your phone number is required</h6>
             </div>
         </fieldset>
         <fieldset>
@@ -65,4 +65,3 @@
         <p class="copyright">Register as <a [routerLink]="['/client-registration']" routerLinkActive="router-link-active" title="Colorlib">Client</a></p>
     </form>
 </div>
-

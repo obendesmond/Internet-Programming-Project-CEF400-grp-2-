@@ -1,18 +1,18 @@
-<mat-card style="width:15em;margin-left:20px;">
+<mat-card style="width:15em;margin-left:20px; margin-bottom:50px;">
     <mat-card-header>
-        <mat-card-title>Dr Envangelist Johnathan</mat-card-title>
-        <mat-card-subtitle>Limbe</mat-card-subtitle>
+        <mat-card-title>{{doctorList.name}}</mat-card-title>
+        <mat-card-subtitle>{{doctorList.location}}</mat-card-subtitle>
     </mat-card-header>
     <img matCardImage src="../../assets/heart-3405559_1920.jpg">
     <mat-card-content>
 
-        <li style="font-size:140%;">Dermatologist</li>
-        <li style="font-size: 120%;">Limbe</li> <br>
+        <li style="font-size:140%;">{{doctorList.specialty}}</li>
+        <li style="font-size: 120%;">{{doctorList.location}}</li> <br>
         <li><span class="availability"> 3/3</span></li>
 
     </mat-card-content>
     <mat-card-actions align="end">
-        <button mat-button color="accent" routerLink="/doctor-detail" routerLinkActive="router-link-active">View</button>
+        <button (click)="onSelect(doctorList)" mat-button color="accent" routerLinkActive="router-link-active">View</button>
         <button mat-button color="primary">Book Appointment</button>
 
     </mat-card-actions>

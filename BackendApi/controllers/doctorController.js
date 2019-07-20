@@ -52,7 +52,7 @@ module.exports.userProfile = (req, res, next) =>{
     );
 }
 
-//get all patients
+//get all doctors
 module.exports.getAllUsers = (req, res, next) => {
     User.find((err, users) => {
         if (!err) {
