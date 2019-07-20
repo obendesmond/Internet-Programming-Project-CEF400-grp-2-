@@ -33,7 +33,6 @@ route.post('/register', async(req, res) => {
     doctor.specialty = req.body.specialty;
     doctor.consultation_fee = req.body.consultation_fee;
     doctor.location = req.body.location;
-    doctor.pic_url = req.body.pic_url;
     doctor.password = hashPass(req.body.password);
     doctor.biography = req.body.biography;
 
@@ -82,7 +81,6 @@ route.put('/:id', (req, res) => {
         updatedDoctor.specialty = req.body.specialty;
         updatedDoctor.consultation_fee = req.body.consultation_fee;
         updatedDoctor.location = req.body.location;
-        updatedDoctor.pic_url = req.body.pic_url;
         updatedDoctor.password = hashPass(req.body.password);
         updatedDoctor.biography = req.body.biography;
 

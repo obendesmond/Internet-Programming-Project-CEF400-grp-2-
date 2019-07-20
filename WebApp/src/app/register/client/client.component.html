@@ -4,7 +4,7 @@
     <h4>As Client</h4>
           <div id="msg">
               <label class="success" *ngIf="showSuccessMessage">account successfully saved.</label>
-              <label class="error" *ngIf="serverErrorMessages">{{serverErrorMessages}}</label>
+              <label class="errors" *ngIf="serverErrorMessages">{{serverErrorMessages}}</label>
           </div>
         <fieldset>
             <input #name="ngModel" [(ngModel)]="clientService.aClient.name" name="name" placeholder="Your name" type="text" tabindex="1" required autofocus minlength="4" autocomplete="off">

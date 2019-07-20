@@ -30,10 +30,6 @@ const doctorSchema = new mongoose.Schema({
         type: String,
         required: 'location can\'t be empty'
     },
-    pic_url: {
-        type: String,
-        required: 'image can\'t be empty'
-    },
     password: {
         type: String,
         required: 'password can\'t be empty',

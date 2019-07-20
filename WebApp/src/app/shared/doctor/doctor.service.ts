@@ -1,5 +1,9 @@
 import { Doctor } from './doctor.model';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
+// import environment base a
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +14,15 @@ export class DoctorService {
     name: '',
     email: '',
     tel: '',
+    specialty: '',
     consultation_fee: 0,
     location: '',
-    pic_url: '',
     password: '',
     biography: ''
   };
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  postDoctor(doctor: Doctor){
+    return this.http.post(environment.apiBaseUrlDoctors+'/register',doctor);
+  }
 }
