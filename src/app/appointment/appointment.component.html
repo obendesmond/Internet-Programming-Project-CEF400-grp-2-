@@ -1,32 +1,28 @@
-<div class="man" fxLayout="row" fxLayoutAlign="center start">
+<div class="man" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="20px" style="margin-top: 20px;">
 
-  <mat-card fxFlex="50">
+  <mat-card fxFlex="40" style="margin-bottom:80px!important;">
       <mat-card-header>
           <mat-card-title>Appointment</mat-card-title>
         
       </mat-card-header>
       
      <mat-divider></mat-divider>
-      <mat-card-content style="height: 8em;">
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-bottom:5px;">
+      <mat-card-content style="height: 5em;">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-bottom:5px;margin-top:10px;">
           <div fxFlex="40">
             Client
           </div>
-          <div fxFlex="60">
+          <div fxFlex="60" style="color:#2196f3">
            
-            <mat-chip-list color="accent">
-              <mat-chip>  DONGA MANTU ENOLAOQUANTE</mat-chip>
-          </mat-chip-list>
+            DONGA MANTU ENOLAOQUANTE
           </div>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-bottom:10px">
           <div fxFlex="40">
             Address
           </div>
-          <div fxFlex="60">           
-            <mat-chip-list>
-              <mat-chip> Limbe Middlefarm ,Bota</mat-chip>
-          </mat-chip-list>
+          <div fxFlex="60" style="color:#2196f3">           
+           Limbe Middlefarm ,Bota
           </div>
         </div>
 
@@ -34,13 +30,15 @@
           <div fxFlex="40">
             Choosen session
           </div>
-          <div fxFlex="60">
-           <mat-chip-list>
-               <mat-chip>session from 1pm - 3pm</mat-chip>
-           </mat-chip-list>
+          <div fxFlex="60" style="color:#2196f3">
+          session from 1pm - 3pm
           </div>
         </div>
+        <mat-divider></mat-divider>
       </mat-card-content>
+      <mat-card-actions align="end">
+        <a href="" mat-button color="primary">Cancel appointment</a>
+      </mat-card-actions>
     
      
   </mat-card>
