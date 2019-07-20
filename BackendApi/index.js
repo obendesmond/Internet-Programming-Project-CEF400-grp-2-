@@ -23,7 +23,7 @@ app.use(cors());
 
 // api routes
 app.use('/api/doctors', doctorController);
-app.use('/api/patients', patientController);
+app.use('/api/clients', patientController);
 app.use('/api/appointments', appointmentController);
 app.use('/api', loginController);
 
