@@ -17,13 +17,17 @@ module.exports.register = (req, res, next) => {
     user.biography = req.body.biography;
 
     user.save((err, doc) => {
-        if (!err)
+        if (!err){
             res.send(doc);
+            console.log(doc);
+        }
         else {
             if (err.code == 11000)
                 res.status(422).send(['Duplicate email adrress found.']);
-            else
-                return next(err);
+            else{
+                return next(err)
+                console.log(err);
+            }
         }
 
     });

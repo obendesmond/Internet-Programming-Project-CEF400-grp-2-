@@ -31,7 +31,7 @@ export class DoctorComponent implements OnInit {
           this.serverErrorMessages = err.error.join('<br/>');
         }
         else{
-          this.serverErrorMessages = 'Something went wrong, plese contact the admin';
+          this.serverErrorMessages = 'Something went wrong, plese contact the admin and check your connection';
         }
       }
     );
