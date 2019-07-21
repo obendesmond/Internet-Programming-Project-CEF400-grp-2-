@@ -11,12 +11,12 @@ This is a simple and basic aplication that has the following functionalities sta
 - Allows users to view and search doctors with respect to location and specialty
 
 # Technologies Used
-- Angular 
-- Ionic
+- Angular (For Web Version)
+- Ionic (For Mobile Version)
 - Nodejs
 - MongoDB
 
-#How To Install It 
+# How To Install It 
 
 FOR WINDOWS
 
