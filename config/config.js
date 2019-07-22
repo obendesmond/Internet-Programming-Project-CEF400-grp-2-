@@ -1,8 +1,13 @@
 // check environment using NODE_ENV
 var env = process.env.NODE_ENV || 'development';
-// var env = 'production'
-console.log('desmond this is env: ' + process.env.NODE_ENV);
-console.log('desmond this is port: ' + process.env.PORT);
+console.log('desmond this is env: ' + env);
+console.log('Old Port: ' + env.PORT);
+if (process.env.NODE_ENV == 'production') {
+    env.PORT = process.env.PORT;
+}
+
+console.log('Port Used: ' + env.PORT);
+
 // fetch environment configuration json file
 var config = require('./config.json');
 
