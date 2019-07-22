@@ -1,5 +1,5 @@
 // check environment using NODE_ENV
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || PORT;
 // var env = 'production'
 
 // fetch environment configuration json file
