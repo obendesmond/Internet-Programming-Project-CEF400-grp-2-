@@ -20,6 +20,10 @@ const appointmentRouter = require('./routes/appointment.router');
 // start app
 var app = express();
 
+
+app.use(express.static(path.join(__dirname,
+    'public')));
+
 // middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -37,6 +41,14 @@ app.use((err, req, res, next) => {
     } else {
         console.log(err);
     }
+});
+
+app.get('/', (req, res) => {
+    res.send('Invalid Endpoint');
+    console.log('Invalid endpoint');
+});
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index'));
 });
 
 // start server
