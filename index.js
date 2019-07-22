@@ -3,6 +3,9 @@ require('./config/config');
 require('./models/db');
 require('./config/passportConfig');
 
+// set port
+var port = process.env.PORT || 3000;
+
 // include modules
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -31,11 +34,10 @@ app.use((err, req, res, next) => {
         var valErrors = [];
         Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
         res.status(422).send(valErrors)
-    }
-    else{
+    } else {
         console.log(err);
     }
 });
 
 // start server
-app.listen(process.env.PORT, () => console.log(`Server started at port : ${process.env.PORT}`));
+app.listen(port, () => console.log(`Server started at port : ${port}`));
