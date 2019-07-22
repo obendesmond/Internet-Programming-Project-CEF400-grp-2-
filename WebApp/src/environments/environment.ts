@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:'http://localhost:3000/api',
-  apiBaseUrlClients:'http://localhost:3000/api/clients',
-  apiBaseUrlDoctors:'http://localhost:3000/api/doctors',
-  apiBaseUrlAppointments:'http://localhost:3000/api/appointments'
+  apiBaseUrl:'/api',
+  apiBaseUrlClients:'/api/clients',
+  apiBaseUrlDoctors:'/api/doctors',
+  apiBaseUrlAppointments:'/api/appointments'
 };
 
 
