@@ -36,3 +36,7 @@ FOR LINUX
 - For linux the commands are the same except that you might need to include
   "sudo" for permissions
 
+# APP PREVIEW
+ 
+ Visit https://cef400group2fet.herokuapp.com/
+
