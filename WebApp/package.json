@@ -8,7 +8,7 @@
     "scripts": {
         "ng": "ng",
         "start": "http-server dist/",
-        "build": "ng build",
+        "build": "ng build --output-path=../public",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
