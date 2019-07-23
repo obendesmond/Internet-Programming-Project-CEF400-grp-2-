@@ -39,4 +39,6 @@ FOR LINUX
 # APP PREVIEW
  
  Visit https://cef400group2fet.herokuapp.com/
+ The preview might have some issues, we are on it don't give up on us yet
+ 
 
