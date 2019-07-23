@@ -28,7 +28,8 @@ app.use('/api/clients', clientRouter);
 app.use('/api/doctors', doctorRouter);
 app.use('/api/appointments', appointmentRouter);
 app.use(function(req, res) {
-    res.sendFile(path.join(__dirname, '/public', 'index.html'));
+    // res.sendFile(path.join(__dirname, '/public', 'index.html'));
+    res.send('This is from no route');
 });
 
 // app error handler
@@ -47,7 +48,8 @@ app.get('/', (req, res) => {
     console.log('Invalid endpoint');
 });
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public', 'index.html'));
+    //res.sendFile(path.join(__dirname, '/public', 'index.html'));
+    res.send('This is from * Route');
 });
 
 // start server
