@@ -23,7 +23,7 @@ var app = express();
 
 // include static file from angular build
 app.use(express.static(__dirname + '/dist/webApp'));
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
     //res.sendFile(path.join(__dirname));
     res.sendFile(path.join(__dirname,'/dist/webApp/index.html'))    ;
 });
