@@ -1,0 +1,41 @@
+<div class="container">
+    <form #clientForm="ngForm" (ngSubmit)="clientForm.valied && registerClient(clientForm)" id="contact">
+        <h3>CLIENT REGISTRATION FORM</h3>
+        <h4>As Client</h4>
+        <div id="msg">
+            <label class="success" *ngIf="showSuccessMessage">account successfully saved.</label>
+            <label class="errors" *ngIf="serverErrorMessages">{{serverErrorMessages}}</label>
+        </div>
+        <fieldset>
+            <input #name="ngModel" [(ngModel)]="clientService.aClient.name" name="name" placeholder="Your name" type="text" tabindex="1" required autofocus minlength="4" autocomplete="off">
+            <div *ngIf="clientForm.submitted && !name.valid">
+                <h6 class="errors" *ngIf="name.errors.required">Your name is required</h6>
+                <h6 class="errors" *ngIf="name.errors.minlength">Name must be more than 4 characters</h6>
+            </div>
+        </fieldset>
+        <fieldset>
+            <input #email="ngModel" [(ngModel)]="clientService.aClient.email" name="email" placeholder="Your Email Address" type="email" tabindex="2" required [pattern]="emailRegex" autocomplete="off">
+            <div *ngIf="clientForm.submitted && !email.valid">
+                <h6 class="errors" *ngIf="email.errors.required">Your email is required</h6>
+                <h6 class="errors" *ngIf="email.errors.Pattern">Invalid email</h6>
+            </div>
+        </fieldset>
+        <fieldset>
+            <input #tel="ngModel" [(ngModel)]="clientService.aClient.tel" name="tel" placeholder="Your Phone Number" type="tel" tabindex="3" required autocomplete="off">
+            <div *ngIf="clientForm.submitted && !tel.valid">
+                <h6 class="errors" *ngIf="tel.errors.required">Your tel is required</h6>
+            </div>
+        </fieldset>
+        <fieldset>
+            <input #password="ngModel" [(ngModel)]="clientService.aClient.password" name="password" placeholder="Your Password" type="password" tabindex="4" required minlength="5" autocomplete="off">
+            <div *ngIf="clientForm.submitted && !name.valid">
+                <h6 class="errors" *ngIf="password.errors.required">Your password is required</h6>
+                <h6 class="errors" *ngIf="password.errors.minlength">Password must be more than 4 characters</h6>
+            </div>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Register</button>
+        </fieldset>
+        <p class="copyright">Register as <a [routerLink]="['/doctor-registration']" routerLinkActive="router-link-active" title="Colorlib">Doctor</a></p>
+    </form>
+</div>

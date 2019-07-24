@@ -1,0 +1,21 @@
+<div class="main" fxLayout="row wrap" fxLayoutAlign="center center">
+
+    <span fxFlex="100" class="main_heading" style="color:white;text-align:center;margin-bottom:-10vh">
+
+    MAKE MEDICAL APPOINTMENT ONLINE TODAY!!
+
+  </span>
+    <form action="" method="get" fxFlex="70" fxLayout="row" fxLayoutAlign="center center" style="margin-top: 20vh;">
+        <select name="select" id="location" fxFlex="20">
+        <option value="">Location</option>
+        <option *ngFor="let location of locations" value="{{ location }}">{{ location }}</option>
+      </select>
+        <input type="text" name="search form" id="search_form" fxFlex="60" placeholder="search doctor, speciality or location">
+        <button [routerLink]="['/doctor-list']" routerLinkActive="router-link-active" mat-raised-button color="primary" fxFlex="20" class="search_btn" type="submit">search</button>
+    </form>
+    <span fxFlex="100" style="text-align: center;letter-spacing: 3px;margin-top:20px;color: white;">
+    Search Doctor, Book Appointment,  Get Help
+  </span>
+
+</div>
+<app-section2></app-section2>

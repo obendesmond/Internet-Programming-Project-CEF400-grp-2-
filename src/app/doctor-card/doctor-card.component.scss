@@ -1,0 +1,17 @@
+ li {
+    list-style-type: none;
+}
+.availability{
+    background: white;
+    color: rgb(17, 145, 17);
+    padding-left: 10px;
+    float: right;
+    width: 2em;
+    height: 2.3em;
+    text-align: center;
+    padding-top: 13px;
+    padding-right:10px;
+    border-radius:50%;
+    margin-top:-20px;
+    box-shadow: 0px 2px 4px rgba($color: #464646, $alpha: .321)
+}
